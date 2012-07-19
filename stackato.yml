@@ -1,0 +1,6 @@
+name: phpbb
+framework: 
+  type: php  
+  document-root: phpBB
+services:
+  phpbb-mysql: mysql
