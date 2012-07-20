@@ -1,6 +1,15 @@
 name: phpbb
+instances: 1
 framework: 
   type: php  
   document-root: phpBB
+mem: 128
 services:
-  phpbb-mysql: mysql
+  mysql-phpbb: mysql
+  fs-phpbb: filesystem
+hooks:
+  post-staging:
+    - mkdir -p "$STACKATO_FILESYSTEM"/images
+    - cp -r phpBB/images/* "$STACKATO_FILESYSTEM"/images
+    - rm -rf phpBB/images
+    - ln -s "$STACKATO_FILESYSTEM"/images phpBB/images
