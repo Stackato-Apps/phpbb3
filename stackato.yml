@@ -5,8 +5,8 @@ framework:
   document-root: phpBB
 mem: 128
 services:
-  mysql-phpbb: mysql
-  fs-phpbb: filesystem
+  ${name}-db: mysql
+  ${name}-fs: filesystem
 hooks:
   post-staging:
     - mkdir -p "$STACKATO_FILESYSTEM"/images

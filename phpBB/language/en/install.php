@@ -1,4 +1,7 @@
 <?php
+$url_parts = parse_url($_SERVER['DATABASE_URL']);
+$db_name = substr( $url_parts{'path'}, 1 );
+
 /**
 *
 * install [English]
@@ -129,13 +132,16 @@ $lang = array_merge($lang, array(
 	'DB_ERR_QUERY_FIRST_TABLE'	=> 'Error while executing <var>query_first</var>, %s (“%s”).',
 	'DB_ERR_SELECT'				=> 'Error while running <code>SELECT</code> query.',
 	'DB_HOST'					=> 'Database server hostname or DSN',
-	'DB_HOST_EXPLAIN'			=> 'DSN stands for Data Source Name and is relevant only for ODBC installs. On PostgreSQL, use localhost to connect to the local server via UNIX domain socket and 127.0.0.1 to connect via TCP. For SQLite, enter the full path to your database file.',
+	'DB_HOST_EXPLAIN'			=> 'Use: '.$url_parts{'host'},
 	'DB_NAME'					=> 'Database name',
+	'DB_NAME_EXPLAIN'			=> 'Use: '.$db_name,
 	'DB_PASSWORD'				=> 'Database password',
+	'DB_PASSWORD_EXPLAIN'			=> 'Use: '.$url_parts{'pass'},
 	'DB_PORT'					=> 'Database server port',
-	'DB_PORT_EXPLAIN'			=> 'Leave this blank unless you know the server operates on a non-standard port.',
+	'DB_PORT_EXPLAIN'			=> 'Use: '.$url_parts{'port'},
 	'DB_UPDATE_NOT_SUPPORTED'	=> 'We are sorry, but this script does not support updating from versions of phpBB prior to “%1$s”. The version you currently have installed is “%2$s”. Please update to a previous version before running this script. Assistance with this is available in the Support Forum on phpBB.com.',
 	'DB_USERNAME'				=> 'Database username',
+	'DB_USERNAME_EXPLAIN'			=> 'Use: '.$url_parts{'user'},
 	'DB_TEST'					=> 'Test connection',
 	'DEFAULT_LANG'				=> 'Default board language',
 	'DEFAULT_PREFIX_IS'			=> 'The convertor was not able to find tables with the specified prefix. Please make sure you have entered the correct details for the board you are converting from. The default table prefix for %1$s is <strong>%2$s</strong>.',
@@ -627,5 +633,5 @@ $lang = array_merge($lang, array(
 
 	'TOPICS_TOPIC_TITLE'			=> 'Welcome to phpBB3',
 ));
-
 ?>
+
