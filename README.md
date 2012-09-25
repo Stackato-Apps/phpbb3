@@ -1,25 +1,18 @@
-[![phpBB](http://www.phpbb.com/theme/images/logos/blue/160x52.png)](http://www.phpbb.com)
-
-## ABOUT
+#PHPBB
 
 phpBB is a free bulletin board written in PHP.
 
-## COMMUNITY
+##Deploy on Stackato
 
-Find support and lots more on [phpBB.com](http://www.phpbb.com)! Discuss the development on [area51](http://area51.phpbb.com/phpBB/index.php).
-
-## CONTRIBUTE
-
-1. [Create an account on phpBB.com](http://www.phpbb.com/community/ucp.php?mode=register)
-2. [Create a ticket (unless there already is one)](http://tracker.phpbb.com/secure/CreateIssue!default.jspa)
-3. [Read our Git Contribution Guidelines](http://wiki.phpbb.com/Git); if you're new to git, also read [the introduction guide](http://wiki.phpbb.com/display/DEV/Working+with+Git)
-4. Send us a pull request
-
-## AUTOMATED TESTING
-
-We have unit and functional tests in order to prevent regressions. You can view the bamboo continuous integration [here](http://bamboo.phpbb.com) or check our travis build below.
-develop - [![Build Status](https://secure.travis-ci.org/phpbb/phpbb3.png?branch=develop)](http://travis-ci.org/phpbb/phpbb3)
-develop-olympus - [![Build Status](https://secure.travis-ci.org/phpbb/phpbb3.png?branch=develop-olympus)](http://travis-ci.org/phpbb/phpbb3)
+1. Install the Stackato client.
+2. Clone the source code. 
+3. Deploy the application using the following command:
+     stackato push -n
+4. Navigate to the application URL and complete the setup process.
+     * The MySQL credentials should shown beside the text fields.
+5. Complete the installation and remove the install directory.
+     stackato ssh <app-name>
+     rm -rf phpBB/install
 
 ## LICENSE
 
