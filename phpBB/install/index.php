@@ -419,7 +419,7 @@ class module
 	{
 		// HTTP_HOST is having the correct browser url in most cases...
 		$server_name = (!empty($_SERVER['HTTP_HOST'])) ? strtolower($_SERVER['HTTP_HOST']) : ((!empty($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : getenv('SERVER_NAME'));
-		$server_port = (!empty($_SERVER['SERVER_PORT'])) ? (int) $_SERVER['SERVER_PORT'] : (int) getenv('SERVER_PORT');
+		$server_port = (int) getenv('VCAP_APP_PORT');
 		$secure = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 1 : 0;
 
 		$script_name = (!empty($_SERVER['PHP_SELF'])) ? $_SERVER['PHP_SELF'] : getenv('PHP_SELF');
@@ -434,6 +434,7 @@ class module
 
 		$url = (($secure) ? 'https://' : 'http://') . $server_name;
 
+		/*
 		if ($server_port && (($secure && $server_port <> 443) || (!$secure && $server_port <> 80)))
 		{
 			// HTTP HOST can carry a port number...
@@ -442,6 +443,7 @@ class module
 				$url .= ':' . $server_port;
 			}
 		}
+		*/
 
 		$url .= $script_path . '/' . $page;
 		header('Location: ' . $url);
