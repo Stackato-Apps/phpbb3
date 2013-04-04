@@ -10,9 +10,8 @@ services:
 hooks:
   post-staging:
     # setting up config.php in filesystem
-    - sh stackato-setup.sh
-
+    - sh setup.sh
     - mkdir -p "$STACKATO_FILESYSTEM"/images
-    - cp -r phpBB/images/* "$STACKATO_FILESYSTEM"/images
+    - cp -r phpBB/images "$STACKATO_FILESYSTEM"/images
     - rm -rf phpBB/images
     - ln -s "$STACKATO_FILESYSTEM"/images phpBB/images
