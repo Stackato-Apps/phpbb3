@@ -1,4 +1,4 @@
-name: phpbb
+name: phpbb3
 instances: 1
 framework: 
   type: php  
