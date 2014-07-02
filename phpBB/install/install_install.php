@@ -540,6 +540,15 @@ class install_install extends module
 		// Obtain any submitted data
 		$data = $this->get_submitted_data();
 
+		// Prefill database credentials
+		$url_parts = parse_url($_SERVER['DATABASE_URL']);
+		$db_name = substr( $url_parts{'path'}, 1 );
+		$data['dbhost'] = $url_parts{'host'};
+		$data['dbport'] = $url_parts{'port'};
+		$data['dbname'] = $db_name;
+		$data['dbuser'] = $url_parts{'user'};
+		$data['dbpasswd'] = $url_parts{'pass'};
+
 		$connect_test = false;
 		$error = array();
 		$available_dbms = get_available_dbms(false, true);
@@ -559,6 +568,8 @@ class install_install extends module
 			}
 			else
 			{
+
+				$data = $this->get_submitted_data();
 				$connect_test = connect_check_db(true, $error, $available_dbms[$data['dbms']], $data['table_prefix'], $data['dbhost'], $data['dbuser'], htmlspecialchars_decode($data['dbpasswd']), $data['dbname'], $data['dbport']);
 			}
 
@@ -654,6 +665,8 @@ class install_install extends module
 				$s_hidden_fields .= '<input type="hidden" name="' . $config_key . '" value="' . $data[$config_key] . '" />';
 			}
 		}
+
+		$data = $this->get_submitted_data();
 
 		$url = ($connect_test) ? $this->p_master->module_url . "?mode=$mode&amp;sub=administrator" : $this->p_master->module_url . "?mode=$mode&amp;sub=database";
 		$s_hidden_fields .= ($connect_test) ? '' : '<input type="hidden" name="testdb" value="true" />';
