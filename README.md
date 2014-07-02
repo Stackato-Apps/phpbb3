@@ -12,11 +12,10 @@ phpBB is a free bulletin board written in PHP.
 
         stackato push -n
 
-4. Navigate to the application URL and complete the setup process. The MySQL credentials should shown beside the text fields.
+4. Navigate to the application URL and complete the setup process. The MySQL credentials should be shown beside the text fields.
 5. Complete the installation and remove the install directory.
 
-        stackato ssh <app-name>
-        rm -rf phpBB/install
+        stackato ssh -a phpbb3 "rm -rf phpBB/install"
 
 ## COMMUNITY
 
