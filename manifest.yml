@@ -1,0 +1,21 @@
+applications:
+- name: phpbb3
+  framework:
+    name: php
+    document-root: phpBB
+  instances: 1
+  mem: 128
+  services:
+    ${name}-db:
+      type: mysql
+    ${name}-fs:
+      type: filesystem
+  stackato:
+    hooks:
+      post-staging:
+      # setting up config.php in filesystem
+      - sh setup.sh
+      - mkdir -p "$STACKATO_FILESYSTEM"/images
+      - cp -r phpBB/images "$STACKATO_FILESYSTEM"/images
+      - rm -rf phpBB/images
+      - ln -s "$STACKATO_FILESYSTEM"/images phpBB/images
