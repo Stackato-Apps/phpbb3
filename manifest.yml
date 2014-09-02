@@ -1,8 +1,6 @@
 applications:
 - name: phpbb3
-  framework:
-    name: php
-    document-root: phpBB
+  buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
   instances: 1
   mem: 128
   services:
@@ -19,3 +17,6 @@ applications:
       - cp -r phpBB/images/* "$STACKATO_FILESYSTEM"/images
       - rm -rf phpBB/images
       - ln -s "$STACKATO_FILESYSTEM"/images phpBB/images
+    requirements:
+      ubuntu:
+      - libjpeg62

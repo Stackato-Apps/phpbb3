@@ -1,0 +1,4 @@
+{
+    "PHP_EXTENSIONS": ["ftp", "gd", "mbstring", "mysql", "mysqli", "zlib"],
+    "WEBDIR": "phpBB"
+}
