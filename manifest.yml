@@ -1,6 +1,5 @@
 applications:
 - name: phpbb3
-  buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
   instances: 1
   memory: 128M
   services:
