@@ -4,16 +4,14 @@
 
 phpBB is a free bulletin board written in PHP.
 
-##Deploy on Stackato
+##Deploy on HPE Helion Stackato
 
-1. Install the Stackato client.
-2. Clone the source code.
-3. Deploy the application using the following command:
+1. Deploy the application using the following command:
 
         stackato push -n
 
-4. Navigate to the application URL and complete the setup process. The MySQL credentials should be shown beside the text fields.
-5. Complete the installation and remove the install directory.
+2. Navigate to the application URL and complete the setup process. The MySQL credentials should be shown beside the text fields.
+3. Complete the installation and remove the install directory.
 
         stackato ssh -a phpbb3 "rm -rf phpBB/install"
 
