@@ -2,7 +2,7 @@ applications:
 - name: phpbb3
   buildpack: https://github.com/dmikusa-pivotal/cf-php-build-pack.git
   instances: 1
-  mem: 128
+  memory: 128M
   services:
     ${name}-db:
       type: mysql
